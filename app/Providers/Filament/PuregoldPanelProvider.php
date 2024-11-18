@@ -25,10 +25,13 @@ class PuregoldPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('puregold')
+            ->brandLogo(asset('images/puregold_logo.png'))
             ->path('puregold')
+            ->favicon(asset('images/puregold_logo.png'))
             ->login()
+            ->registration()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Green,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
