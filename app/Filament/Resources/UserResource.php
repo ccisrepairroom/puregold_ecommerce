@@ -17,6 +17,11 @@ use Illuminate\Support\Facades\Hash;
 use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\IconColumn;
+use Filament\Notifications\Notification;
+use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\DeleteBulkAction;
+
+
 
 
 
@@ -115,9 +120,15 @@ class UserResource extends Resource
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                BulkActionGroup::make([                    
+                    DeleteBulkAction::make()
+                    ->successNotification(
+                        Notification::make()
+                             ->success()
+                             ->title('User deleted')
+                             ->body('The user has been deleted successfully.'),
+                     )
+                    ->successNotificationTitle('User deleted'),                ]),
             ]);
     }
 
