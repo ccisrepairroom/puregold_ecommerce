@@ -14,6 +14,12 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Hash;
+use Filament\Forms\Components\FileUpload;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\IconColumn;
+
+
+
 
 
 
@@ -65,6 +71,9 @@ class UserResource extends Resource
                             ->requiredWith('password')
                             ->revealable()
                             ->visible(fn ($livewire) =>$livewire instanceof Pages\CreateUser),
+                            FileUpload::make('profile_image')
+                            ->avatar()
+                            
                    
             ]);
     }
@@ -73,6 +82,8 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
+                ImageColumn::make('profile_image')
+                ->circular(),
                 Tables\Columns\TextColumn::make('name')
                 ->searchable()
                 ->toggleable(isToggledHiddenByDefault: false)
@@ -81,11 +92,17 @@ class UserResource extends Resource
                 ->searchable()
                 ->toggleable(isToggledHiddenByDefault: false)
                 ->sortable(),
-                Tables\Columns\TextColumn::make('is_frequent_shopper')
-               
-                ->searchable()
-                ->toggleable(isToggledHiddenByDefault: false)
-                ->sortable(),
+                Tables\Columns\IconColumn::make('is_frequent_shopper')
+                ->icon(fn (string $state): string => match ($state) {
+                    '1' => 'heroicon-o-check',
+                    '0' => 'heroicon-o-x-circle',
+                })
+                ->color(fn (string $state): string => match ($state) {
+                  
+                    '0' => 'danger',
+                    '1' => 'success',
+                })
+                ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('email')
                 ->searchable()
                 ->toggleable(isToggledHiddenByDefault: false)

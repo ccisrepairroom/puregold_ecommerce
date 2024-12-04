@@ -26,6 +26,7 @@ class User extends Authenticatable
         'contact_number',
         'role_id',
         'is_frequent_shopper',
+        'profile_image',
     ];
 
     /**
@@ -58,6 +59,7 @@ class User extends Authenticatable
         'email',
         'password',
         'contact_number',
+        'profile_image',
         'role_id',
         'is_frequent_shopper',
     ];

@@ -7,6 +7,8 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
 use Filament\Pages\Auth\Register as AuthRegister;
 use App\Models\User;
+use Filament\Forms\Components\FileUpload;
+
 
 
 
@@ -15,6 +17,8 @@ class Register extends AuthRegister
     public function form(Form $form): Form
     {
         return $form->schema([
+            FileUpload::make('profile_image')
+            ->avatar(),
             // Use Filament's existing form components
             $this->getNameFormComponent(),
             $this->getEmailFormComponent(),
