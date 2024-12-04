@@ -122,13 +122,13 @@ class UserResource extends Resource
             ->bulkActions([
                 BulkActionGroup::make([                    
                     DeleteBulkAction::make()
-                    ->successNotification(
+                    /*->successNotification(
                         Notification::make()
                              ->success()
                              ->title('User deleted')
-                             ->body('The user has been deleted successfully.'),
-                     )
-                    ->successNotificationTitle('User deleted'),                ]),
+                             ->body('The user has been deleted successfully.'),*/
+                
+                  ]),
             ]);
     }
 
