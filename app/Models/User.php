@@ -23,9 +23,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'phone_number',
+        'contact_number',
         'role_id',
-        'address',
+        'is_frequent_shopper',
     ];
 
     /**
@@ -57,9 +57,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'phone_number',
+        'contact_number',
         'role_id',
-        'address',
+        'is_frequent_shopper',
     ];
 
     /**

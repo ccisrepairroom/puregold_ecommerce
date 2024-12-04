@@ -17,6 +17,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use App\Filament\Auth\Register;
 
 class PuregoldPanelProvider extends PanelProvider
 {
@@ -26,10 +27,11 @@ class PuregoldPanelProvider extends PanelProvider
             ->default()
             ->id('puregold')
             ->brandLogo(asset('images/puregold_logo.png'))
+            ->brandLogoHeight('4rem')
             ->path('puregold')
             ->favicon(asset('images/puregold_logo.png'))
             ->login()
-            ->registration()
+            ->registration(Register::class)
             ->colors([
                 'primary' => Color::Green,
             ])
