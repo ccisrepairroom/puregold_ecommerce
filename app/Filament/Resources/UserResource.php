@@ -59,6 +59,8 @@ class UserResource extends Resource
                                 0 => 'No',
                                 1 => 'Yes',
                             ]),
+                Forms\Components\Select::make('roles')
+                            ->relationship('roles','name'),
                 Forms\Components\TextInput::make('email')
                             ->email(),
                 Forms\Components\TextInput::make('password')->confirmed()
